@@ -1,0 +1,7 @@
+file:///C:/Users/lenovo-NB/Desktop/Gantt_Chart/samples/09_worktime/06_task_calendars.html
+file:///C:/Users/lenovo-NB/Desktop/Gantt_Chart/samples/08_api/12_fit_task_text.html
+file:///C:/Users/lenovo-NB/Desktop/Gantt_Chart/samples/08_api/21_load_from_excel.html
+
+.gantt_grid_scale, .gantt_task_scale, .gantt_task_vscroll{
+background-color: #fff;
+}
