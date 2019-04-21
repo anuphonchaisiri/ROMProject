@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4715C7C9-4330-4351-9A0D-0C5FDB8BE61E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ROM</RootNamespace>
+    <AssemblyName>ROM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="COMLibrary">
+      <HintPath>..\Controller\outputdll\COMLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="COMUtil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Controller\outputdll\COMUtil.dll</HintPath>
+    </Reference>
+    <Reference Include="Decryptor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Controller\outputdll\Decryptor.dll</HintPath>
+    </Reference>
+    <Reference Include="Effortless.Net.Encryption, Version=3.2.0.0, Culture=neutral, PublicKeyToken=603f9a8e5bb15e51, processorArchitecture=MSIL">
+      <HintPath>packages\Effortless.Net.Encryption.3.2.0\lib\net40\Effortless.Net.Encryption.dll</HintPath>
+    </Reference>
+    <Reference Include="EncryptionLibrary">
+      <HintPath>..\Controller\outputdll\EncryptionLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AuthUser.cs" />
+    <Compile Include="Service\DBConnect.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\report.css" />
+    <Content Include="dist\smartsearch\searchselect.css" />
+    <Content Include="dist\smartsearch\searchselect.js" />
+    <Content Include="dist\sweetalert\sweetalert.css" />
+    <Content Include="dist\sweetalert\sweetalert.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Framework\GanttChart\codebase\dhtmlxgantt.css" />
+    <Content Include="Framework\GanttChart\codebase\dhtmlxgantt.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_csp.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_fullscreen.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_keyboard_navigation.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_marker.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_multiselect.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_quick_info.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_smart_rendering.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_tooltip.js" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_undo.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ar.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_be.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ca.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_cn.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_cs.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_da.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_de.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_el.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_es.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fa.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fi.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fr.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_he.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_hr.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_hu.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_id.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_it.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_jp.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_kr.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_nb.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_nl.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_no.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_pl.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_pt.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ro.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ru.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_si.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_sk.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_sv.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_tr.js" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ua.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_broadway.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_broadway.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_black.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_black.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_white.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_white.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_material.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_material.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_meadow.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_meadow.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_skyblue.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_skyblue.js" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_terrace.css" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_terrace.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\dhtmlxgantt.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\dhtmlxgantt.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_csp.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_fullscreen.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_keyboard_navigation.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_marker.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_multiselect.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_quick_info.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_smart_rendering.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_tooltip.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\ext\dhtmlxgantt_undo.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_ar.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_be.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_ca.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_cn.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_cs.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_da.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_de.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_el.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_es.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_fa.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_fi.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_fr.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_he.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_hr.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_hu.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_id.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_it.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_jp.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_kr.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_nb.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_nl.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_no.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_pl.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_pt.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_ro.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_ru.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_si.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_sk.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_sv.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_tr.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\locale\locale_ua.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_broadway.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_broadway.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_contrast_black.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_contrast_black.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_contrast_white.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_contrast_white.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_material.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_material.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_meadow.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_meadow.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_skyblue.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_skyblue.js" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_terrace.css" />
+    <Content Include="Framework\GanttChart\codebase\sources\skins\dhtmlxgantt_terrace.js" />
+    <Content Include="Framework\GanttChart\license.txt" />
+    <Content Include="Framework\GanttChart\readme.txt" />
+    <Content Include="Framework\GanttChart\whatsnew.txt" />
+    <Content Include="Framework\lightGallery\dist\css\lg-fb-comment-box.css" />
+    <Content Include="Framework\lightGallery\dist\css\lg-fb-comment-box.min.css" />
+    <Content Include="Framework\lightGallery\dist\css\lg-transitions.css" />
+    <Content Include="Framework\lightGallery\dist\css\lg-transitions.min.css" />
+    <Content Include="Framework\lightGallery\dist\css\lightgallery.css" />
+    <Content Include="Framework\lightGallery\dist\css\lightgallery.min.css" />
+    <Content Include="Framework\lightGallery\dist\fonts\lg.svg" />
+    <Content Include="Framework\lightGallery\dist\img\loading.gif" />
+    <Content Include="Framework\lightGallery\dist\img\video-play.png" />
+    <Content Include="Framework\lightGallery\dist\img\vimeo-play.png" />
+    <Content Include="Framework\lightGallery\dist\img\youtube-play.png" />
+    <Content Include="Framework\lightGallery\dist\js\lightgallery-all.js" />
+    <Content Include="Framework\lightGallery\dist\js\lightgallery-all.min.js" />
+    <Content Include="Framework\lightGallery\dist\js\lightgallery.js" />
+    <Content Include="Framework\lightGallery\dist\js\lightgallery.min.js" />
+    <Content Include="Framework\lightGallery\Gruntfile.js" />
+    <Content Include="Framework\lightGallery\lib\jquery.mousewheel.min.js" />
+    <Content Include="Framework\lightGallery\lib\lg.png" />
+    <Content Include="Framework\lightGallery\lib\picturefill.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-autoplay.js" />
+    <Content Include="Framework\lightGallery\modules\lg-autoplay.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-fullscreen.js" />
+    <Content Include="Framework\lightGallery\modules\lg-fullscreen.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-hash.js" />
+    <Content Include="Framework\lightGallery\modules\lg-hash.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-pager.js" />
+    <Content Include="Framework\lightGallery\modules\lg-pager.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-share.js" />
+    <Content Include="Framework\lightGallery\modules\lg-share.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-thumbnail.js" />
+    <Content Include="Framework\lightGallery\modules\lg-thumbnail.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-video.js" />
+    <Content Include="Framework\lightGallery\modules\lg-video.min.js" />
+    <Content Include="Framework\lightGallery\modules\lg-zoom.js" />
+    <Content Include="Framework\lightGallery\modules\lg-zoom.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\loadmessage.gif" />
+    <Content Include="images\user.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\font-awesome\.bower.json" />
+    <Content Include="fonts\font-awesome\.gitignore" />
+    <Content Include="fonts\font-awesome\.npmignore" />
+    <Content Include="fonts\font-awesome\bower.json" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css.map" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="fonts\font-awesome\less\animated.less" />
+    <Content Include="fonts\font-awesome\less\bordered-pulled.less" />
+    <Content Include="fonts\font-awesome\less\core.less" />
+    <Content Include="fonts\font-awesome\less\fixed-width.less" />
+    <Content Include="fonts\font-awesome\less\font-awesome.less" />
+    <Content Include="fonts\font-awesome\less\icons.less" />
+    <Content Include="fonts\font-awesome\less\larger.less" />
+    <Content Include="fonts\font-awesome\less\list.less" />
+    <Content Include="fonts\font-awesome\less\mixins.less" />
+    <Content Include="fonts\font-awesome\less\path.less" />
+    <Content Include="fonts\font-awesome\less\rotated-flipped.less" />
+    <Content Include="fonts\font-awesome\less\screen-reader.less" />
+    <Content Include="fonts\font-awesome\less\stacked.less" />
+    <Content Include="fonts\font-awesome\less\variables.less" />
+    <Content Include="fonts\font-awesome\scss\font-awesome.scss" />
+    <Content Include="fonts\font-awesome\scss\_animated.scss" />
+    <Content Include="fonts\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="fonts\font-awesome\scss\_core.scss" />
+    <Content Include="fonts\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="fonts\font-awesome\scss\_icons.scss" />
+    <Content Include="fonts\font-awesome\scss\_larger.scss" />
+    <Content Include="fonts\font-awesome\scss\_list.scss" />
+    <Content Include="fonts\font-awesome\scss\_mixins.scss" />
+    <Content Include="fonts\font-awesome\scss\_path.scss" />
+    <Content Include="fonts\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="fonts\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="fonts\font-awesome\scss\_stacked.scss" />
+    <Content Include="fonts\font-awesome\scss\_variables.scss" />
+    <Content Include="Framework\lightGallery\.editorconfig" />
+    <Content Include="Framework\lightGallery\.gitattributes" />
+    <Content Include="Framework\lightGallery\.gitignore" />
+    <Content Include="Framework\lightGallery\.jscsrc" />
+    <Content Include="Framework\lightGallery\.jshintrc" />
+    <Content Include="Framework\lightGallery\.travis.yml" />
+    <Content Include="Framework\lightGallery\bower.json" />
+    <Content Include="Framework\lightGallery\contributing.md" />
+    <Content Include="Framework\lightGallery\dist\fonts\lg.eot" />
+    <Content Include="Framework\lightGallery\dist\fonts\lg.ttf" />
+    <Content Include="Framework\lightGallery\dist\fonts\lg.woff" />
+    <Content Include="Framework\lightGallery\lightGallery.jquery.json" />
+    <Content Include="Framework\lightGallery\package.json" />
+    <Content Include="Framework\lightGallery\README.md" />
+    <Content Include="Framework\lightGallery\selection.json" />
+    <Content Include="Framework\GanttChart\codebase\dhtmlxgantt.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_csp.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_fullscreen.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_keyboard_navigation.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_marker.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_multiselect.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_quick_info.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_smart_rendering.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_tooltip.js.map" />
+    <Content Include="Framework\GanttChart\codebase\ext\dhtmlxgantt_undo.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ar.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_be.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ca.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_cn.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_cs.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_da.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_de.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_el.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_es.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fa.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fi.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_fr.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_he.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_hr.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_hu.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_id.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_it.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_jp.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_kr.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_nb.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_nl.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_no.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_pl.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_pt.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ro.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ru.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_si.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_sk.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_sv.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_tr.js.map" />
+    <Content Include="Framework\GanttChart\codebase\locale\locale_ua.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_broadway.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_black.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_contrast_white.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_material.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_meadow.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_skyblue.js.map" />
+    <Content Include="Framework\GanttChart\codebase\skins\dhtmlxgantt_terrace.js.map" />
+    <Content Include="Scripts\html2canvas.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\report.js" />
+    <Content Include="Scripts\Site.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Master\User.cshtml" />
+    <Content Include="Views\Shared\_LayoutForm.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Master\BudgetPlan.cshtml" />
+    <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutMaintain.cshtml" />
+    <Content Include="Views\Master\Account.cshtml" />
+    <Content Include="Views\Master\Employee.cshtml" />
+    <Content Include="Views\Shared\_LayoutChat.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63127</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63127/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

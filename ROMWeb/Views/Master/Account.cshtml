@@ -1,0 +1,267 @@
+﻿@{
+    ViewBag.Title = "Account Master";
+}
+@model IEnumerable<COMLibrary.Model.Finance.AccountMsaterModel>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="text-primary">@ViewBag.Title.</span>
+        <div class="panel-button">
+            <span class="btn btn-success" onclick="OpenModalCreate();"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;เพิ่มรายการ</span>
+        </div>
+    </div>
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table id="table-master-data" class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.account_code)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.account_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.created_by_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.created_on)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.updated_by_name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.updated_on)
+                        </th>
+                        <th>
+                            จัดการข้อมูล
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @{int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <tr data-code="@item.account_code" data-name="@item.account_name">
+                            <td>
+                                @(i++)
+                            </td>
+                            <td class="code">
+                                @Html.DisplayFor(modelItem => item.account_code)
+                            </td>
+                            <td class="name">
+                                @Html.DisplayFor(modelItem => item.account_name)
+                            </td>
+                            <td class="created_by">
+                                @Html.DisplayFor(modelItem => item.created_by_name)
+                            </td>
+                            <td class="created_on">
+                                @Html.DisplayFor(modelItem => item.created_on_display)
+                            </td>
+                            <td class="updated_by">
+                                @Html.DisplayFor(modelItem => item.updated_by_name)
+                            </td>
+                            <td class="updated_on">
+                                @Html.DisplayFor(modelItem => item.updated_on_display)
+                            </td>
+                            <td class="text-center">
+                                <a href="Javascript:;" class="fa fa-edit text-primary" style="font-size:17px;" onclick="OpenModalUpdate(this);"></a>
+                                &nbsp;&nbsp;
+                                <a href="Javascript:;" class="fa fa-trash-o text-danger" style="font-size:17px;" onclick="ConfirmDeleteData(this);"></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        function OpenModalCreate()
+        {
+            $("#modeAction").val("create");
+            $(".title-modal-detail").html("สร้างบัญชีใหม่");
+            $("#txtCode").prop('disabled', false);
+            $("#txtCode").val("");
+            $("#txtName").val("");
+            $('#modalMasterData').modal('show');
+        }
+
+        function OpenModalUpdate(obj)
+        {
+            $tr = $(obj).closest('tr');
+            $("#modeAction").val("update");
+            $(".title-modal-detail").html("แก้ไขชื่อบัญชี");
+            $("#txtCode").prop('disabled', true);
+            $("#txtCode").val($tr.data("code"));
+            $("#txtName").val($tr.data("name"));
+            $('#modalMasterData').modal('show');
+        }
+
+        function ConfirmDeleteData(obj) {
+            if (AlertConfirm(obj, 'ยืนยันลบรายการ?')) {
+                AlertLoading(true, 'กำลังทำรายการ');
+                $tr = $(obj).closest('tr');
+                var datapost = {};
+                datapost.account_code = $tr.data("code");
+
+                $.ajax({
+                    type: "POST",  // type of request
+                    url: "AccountDelete", // resource file with extension
+                    data: datapost,
+                    success: callbackDelete, // callback function, called when Ajax operation is complete
+                    statusCode: {
+                        404: function () {
+                            AlertLoading(false);
+                            AlertError("page not found");
+                        }
+                    },
+                    error: function (xhr, reason, exMessage) {
+                        AlertLoading(false);
+                        if (xhr.status === 555) {
+                            AlertError(exMessage);
+                        }
+                        if (xhr.status === 404) {
+                            AlertError("page not found");
+                        }
+                        else
+                        {
+                            AlertError(reason + "[" + xhr.status + "] : " + exMessage);
+                        }
+                    }
+                }); 
+                
+            }
+        }
+        
+        function AlertConfirmSave(obj) {
+            var msgError = [];
+            if ($("#txtCode").prop('required') && $("#txtCode").val().trim() == "") {
+                msgError.push("กรุณาระบุรหัสทางบัญชี !!");
+            }
+
+            if ($("#txtName").prop('required') && $("#txtName").val().trim() == "") {
+                msgError.push("กรุณาระบุชื่อทางบัญชี !!");
+            }
+            if (msgError.length > 0) {
+                $("#txtName").focus();
+                AlertError(msgError.join("<br/>"));
+                return;
+            }
+
+            if (AlertConfirm(obj, "ยืนยันการบันทึก?")) {
+                var datapost = {};
+                datapost.account_code = $("#txtCode").val();
+                datapost.account_name = $("#txtName").val();
+                var urlAction = $("#modeAction").val() == "create" ? "AccountCraete" : "AccountUpdate";
+
+                AlertLoading(true, 'กำลังสร้างรายการ');
+                $.ajax({
+                    type: "POST",  // type of request
+                    url: urlAction, // resource file with extension
+                    data: datapost,
+                    success: callbackSuccess, // callback function, called when Ajax operation is complete
+                    statusCode: {
+                        404: function () {
+                            AlertLoading(false);
+                            AlertError("page not found");
+                        }
+                    },
+                    error: function (xhr, reason, exMessage) {
+                        AlertLoading(false);
+                        if (xhr.status === 555) {
+                            AlertError(exMessage);
+                        }
+                        else {
+                            AlertError(reason + "[" + xhr.status + "] : " + exMessage);
+                        }
+                        
+                    }
+                }); 
+            }
+        }
+        
+        function callbackSuccess(datas, status) {
+
+            if ($("#modeAction").val() == "create") {
+                var tbody = $("#table-master-data").find("tbody");
+                var trcount = $(tbody).find("tr").length;
+                var tr = $("<tr />", {
+                    data: {
+                        "code": datas.account_code,
+                        "name": datas.account_name
+                    },
+                    html: "<td>" + (trcount + 1) + "</td> <td>" + datas.account_code + "</td> <td>" + datas.account_name + "</td>"
+                        + "<td>" + datas.created_by_name + "</td> <td>" + datas.created_on_display + "</td>"
+                        + "<td></td><td></td> "
+                });
+                var tdManage = "<td class='text-center'>"
+                    + "<a href='Javascript:;' class='fa fa-edit text-primary' style='font-size: 17px;' onclick='OpenModalUpdate(this);' ></a>&nbsp;&nbsp; "
+                    + "<a href='Javascript:;' class='fa fa-trash-o text-danger' style='font-size: 17px;' onclick='ConfirmDeleteData(this);' ></a> "
+                    + "</td > ";
+                $(tr).append(tdManage);
+                $(tbody).append(tr);
+            }
+            else
+            {
+                var tr = $("tr[data-code='" + datas.account_code + "']");
+                $(tr).data("name", datas.account_name);
+                var td = $(tr).find("td");
+                $(tr).find(".name").html(datas.account_name);
+                $(tr).find(".updated_by").html(datas.updated_by_name);
+                $(tr).find(".updated_on").html(datas.updated_on_display);
+            }
+            $('#modalMasterData').modal('hide');
+            AlertLoading(false);
+            AlertSuccess("บันทึกสำเร็จ");
+        }
+
+        function callbackDelete(data, status) {
+            $("tr[data-code='" + data.account_code + "']").remove();
+            $('#modalMasterData').modal('hide');
+            AlertLoading(false);
+            AlertSuccess("ลบรายการสำเร็จ");
+        }
+    </script>
+</div>
+
+<div class="modal fade" id="modalMasterData" role="dialog" data-backdrop="static">
+    <div class="modal-dialog" style="margin: 40px auto;">
+        <!-- Modal content-->
+        <div class="modal-content" style="height:auto;box-shadow:none;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="text-primary title-modal-detail"></span>
+                <input type="hidden" id="modeAction" />
+            </div>
+            <div class="modal-body" style="height:auto;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>รหัสทางบัญชี</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" id="txtCode" class="form-control input-sm" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>ชื่อทางบัญชี</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" id="txtName" class="form-control input-sm" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer text-right">
+            <button type="button" class="btn btn-success btn-sm" onclick="AlertConfirmSave(this);"><i class="fa fa-save"></i>&nbsp;บันทึก</button>
+            <button type="button" class="btn btn-danger btn-sm" onclick="$('#modalMasterData').modal('hide');"><i class="fa fa-minus-circle"></i>&nbsp;ยกเลิก</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,242 @@
+﻿
+@Styles.Render("~/dist/smartsearch/searchselect.css")
+@Scripts.Render("~/dist/smartsearch/searchselect.js")
+<h1>Test Component</h1>
+<div class="form-row">
+    <div class="col-4">
+        <input type="text" id="txtCreateActivityOtherID" class="form-control input-sm">
+    </div>
+</div>
+
+<div class="panel-smart-other-delegate-template">
+    <div class="smart-other-delegate-template" style="display: none;">
+        <div class="col-sm-4 smart-other-delegate-temp" style="padding: 0 5px;">
+            <div class="input-group" style="margin-bottom: 0px;">
+                <span class="form-control" style="background: #eee"></span>
+                <span class="input-group-addon input-group-addon-remove" onclick="$(this).closest('.smart-other-delegate-temp').remove();resultSelectedSmartOtherDelegate();" style="cursor: pointer">
+                    <i class="fa fa-remove"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="input-group">
+        <div class="form-control input-group-inline input-group-other-delegate blue-require-style" style="padding: 5px 0px;padding-left : 5px;height:auto; max-height: 200px;" onclick="SelectedSearchBoxOtherDelegate(event);">
+            <div class="row smart-other-delegate-result" style="margin-bottom: 0px;">
+                <div class="col-sm-4 input-group-other-delegate-container" style="padding: 0;">
+                    <input id="txtSmartSearchOtherDelegate" style="border: none; outline: none; background: none; box-shadow: none;" class="form-control-smart-search" type="text" placeholder="Search..." autocomplete="off">
+
+                </div>
+            </div>
+            <div class="smart-search-popup" style="width:100%;">
+                <div class="text-right smart-search-popup-close">
+                    <span class="pull-left enable-multiple-selection">Enable multiple selection</span>
+                    <i class="fa fa-remove smart-search-popup-close-btn" onclick="$(this).closest('.smart-search-popup').css({ 'display': 'none' });event.stopPropagation();"></i>
+                </div>
+                <div class="text-center smart-search-popup-empty" style="display: none;">no matching data</div>
+                <div class="smart-search-popup-result">
+                    <table class="table" style="table-layout: fixed;width:100%">
+
+                        <tbody>
+                            <tr class="smart-search-popup-result-row smart-search-popup-result-row-focus" data-allowevent="true" data-event="main" data-code="TH00002138" data-value="Atchara Boongthong" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00002138</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00002138</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">Atchara Boongthong (Atchara Boongthong)</b>
+                                        <b class="smart-search-popup-result-value-temp">Atchara Boongthong (Atchara Boongthong)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00003983" data-value="Chokechai Ruammit" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00003983</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00003983</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">Chokechai Ruammit (Chokechai Ruammit)</b>
+                                        <b class="smart-search-popup-result-value-temp">Chokechai Ruammit (Chokechai Ruammit)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00003982" data-value="KiTHAI Administrator" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00003982</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00003982</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">KiTHAI Administrator (KiTHAI Administrator)</b>
+                                        <b class="smart-search-popup-result-value-temp">KiTHAI Administrator (KiTHAI Administrator)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00003984" data-value="OKR-Thailand Administrator" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00003984</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00003984</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">OKR-Thailand Administrator (OKR-Thailand Administrator)</b>
+                                        <b class="smart-search-popup-result-value-temp">OKR-Thailand Administrator (OKR-Thailand Administrator)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00001226" data-value="Thanawut Photipwong" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00001226</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00001226</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">Thanawut Photipwong (Thanawut Photipwong)</b>
+                                        <b class="smart-search-popup-result-value-temp">Thanawut Photipwong (Thanawut Photipwong)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00001225" data-value="Tuangporn Namasonthi" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00001225</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00001225</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">Tuangporn Namasonthi (Tuangporn Namasonthi)</b>
+                                        <b class="smart-search-popup-result-value-temp">Tuangporn Namasonthi (Tuangporn Namasonthi)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00000010" data-value="เก่งศักดิ์ อากาเป้" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00000010</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00000010</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">เก่งศักดิ์ อากาเป้ (kengsak agape)</b>
+                                        <b class="smart-search-popup-result-value-temp">เก่งศักดิ์ อากาเป้ (kengsak agape)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00000036" data-value="เทวิน อากาเป้" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00000036</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00000036</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">เทวิน อากาเป้ (Taywin agape)</b>
+                                        <b class="smart-search-popup-result-value-temp">เทวิน อากาเป้ (Taywin agape)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            <tr class="smart-search-popup-result-row" data-allowevent="true" data-event="main" data-code="TH00000004" data-value="เอกชัย อากาเป้" style="display: table-row;">
+                                <td style="width: 100px;" class="text-center">
+                                    <div class="img-circle-box ag-img-user">
+                                    </div>
+                                </td>
+                                <td style="vertical-align: middle;">
+                                    <p>
+                                        <b style="color: #47a3da">Link ID : </b><b class="smart-search-popup-result-code">TH00000004</b>
+                                        <b class="smart-search-popup-result-code-temp">TH00000004</b>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-plus enable-multiple-selection pull-right" style="font-size: 20px; margin-right: 10px;"></i>
+                                        <b style="color: #47a3da">Fullname : </b><b class="smart-search-popup-result-value">เอกชัย อากาเป้ (akachai agape)</b>
+                                        <b class="smart-search-popup-result-value-temp">เอกชัย อากาเป้ (akachai agape)</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <span class="input-group-addon" style="cursor: pointer;" onclick="RemoveAllSelectOtherDelegate(this);">
+            <i class="fa fa-remove"></i>
+        </span>
+        <span class="input-group-addon" style="cursor: pointer;" onclick="SelectedSearchBoxOtherDelegate(event);">
+            <i class="fa fa-search"></i>
+        </span>
+
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $(".input-group-other-delegate").smartSearch({
+            width: "100%",
+            enableMutiSelect: true,
+            onAfterSelected: function () {
+                return "";
+            },
+            onSelected: function (code, value) {
+                addSelectedSmartOtherDelegate(code, value, true);
+            }
+        });
+    });
+
+</script>
+
+

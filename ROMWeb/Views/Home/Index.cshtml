@@ -1,0 +1,567 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<style>
+
+    .main-ws-sec {
+        float: left;
+        width: 100%;
+    }
+
+    .posts-right {
+        position: fixed;
+        right: 0;
+        width: 16%;
+        border: solid 1px #808080ad;
+        height: calc(100vh - 50px);
+    }
+
+    .posts-section {
+        width: 60%;
+    }
+
+    .posts-interesting {
+        width: 40%;
+    }
+
+    .post-content {
+        padding: 0px 5px;
+        padding-top: 15px;
+        float: left;
+        position: relative;
+    }
+
+    .post-bar {
+        float: left;
+        width: 100%;
+        background-color: #fff;
+        border-left: 1px solid #e4e4e4;
+        border-right: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        margin-bottom: 12px;
+        border-radius: 4px;
+    }
+
+    .post_topbar {
+        float: left;
+        width: 100%;
+        position: relative;
+        padding: 20px 20px 15px 20px;
+    }
+
+    .usy-dt {
+        float: left;
+    }
+
+    .post-bar > .post_topbar img {
+        float: left;
+    }
+
+    .usy-name {
+        float: left;
+        margin-left: 10px;
+    }
+
+        .usy-name h3 {
+            color: #000000;
+            font-size: 16px;
+            text-transform: capitalize;
+            font-weight: 600;
+            margin-bottom: 6px;
+            margin-top: 2px;
+        }
+
+        .usy-name span {
+            color: #b2b2b2;
+            font-size: 14px;
+        }
+
+        .usy-name img {
+            margin-top: 2px;
+            margin-right: 6px;
+        }
+
+    .ed-opts {
+        float: right;
+        position: relative;
+    }
+
+        .ed-opts > a {
+            color: #b2b2b2;
+            font-size: 20px;
+            float: right;
+            position: relative;
+            left: 10px;
+            top: -10px;
+        }
+
+    .ed-options {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 130px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.28);
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.28);
+        -ms-box-shadow: 0 0 10px rgba(0,0,0,0.28);
+        -o-box-shadow: 0 0 10px rgba(0,0,0,0.28);
+        box-shadow: 0 0 10px rgba(0,0,0,0.28);
+        padding: 20px;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 0;
+    }
+
+        .ed-options.active {
+            opacity: 1;
+            visibility: visible;
+            z-index: 999;
+        }
+
+        .ed-options li {
+            float: left;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+            .ed-options li a {
+                color: #686868;
+                font-size: 14px;
+                font-weight: 600;
+            }
+
+    .la {
+        display: inline-block;
+        font: normal normal normal 16px/1 "LineAwesome";
+        font-size: inherit;
+        text-decoration: inherit;
+        text-rendering: optimizeLegibility;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+    }
+
+
+    ol, ul {
+        list-style: none;
+    }
+
+    .epi-sec {
+        float: left;
+        width: 100%;
+        /*margin-bottom: 15px;*/
+        padding: 0 20px;
+    }
+
+    .descp {
+        float: left;
+    }
+
+        .descp li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+            .descp li i {
+                margin-right: 5px;
+                margin-top: 5px;
+                float: left;
+            }
+
+            .descp li span {
+                color: #b2b2b2;
+                font-size: 14px;
+                float: left;
+            }
+
+    .bk-links {
+        float: right;
+    }
+
+        .bk-links li {
+            display: inline-block;
+            margin-right: 7px;
+        }
+
+            .bk-links li i {
+                color: #fff;
+                font-size: 24px;
+                width: 30px;
+                height: 30px;
+                background-color: #53d690;
+                text-align: center;
+                line-height: 30px;
+            }
+
+
+                .bk-links li i.fa-envelope-o {
+                    background-color: #e44d3a;
+                }
+
+    .job_descp {
+        float: left;
+        width: 100%;
+        padding: 0 20px 20px 20px;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+
+        .job_descp h3 {
+            color: #000000;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+    .job-dt {
+        float: left;
+        width: 100%;
+        margin-bottom: 22px;
+    }
+
+        .job-dt li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+            .job-dt li a {
+                color: #fff;
+                background-color: #53d690;
+                text-transform: capitalize;
+                padding: 5px 13px;
+                -webkit-border-radius: 30px;
+                -moz-border-radius: 30px;
+                -ms-border-radius: 30px;
+                -o-border-radius: 30px;
+                border-radius: 30px;
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+            .job-dt li span {
+                color: #000000;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+    .job_descp > p {
+        color: #686868;
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 20px;
+    }
+
+        .job_descp > p a {
+            color: #e44d3a;
+            font-weight: 600;
+        }
+
+    .skill-tags {
+        float: left;
+        width: 100%;
+    }
+
+        .skill-tags li {
+            display: inline-block;
+            margin-right: 6px;
+            margin-bottom: 10px;
+        }
+
+            .skill-tags li a {
+                display: inline-block;
+                color: #b2b2b2;
+                font-size: 14px;
+                background-color: #e5e5e5;
+                -webkit-border-radius: 30px;
+                -moz-border-radius: 30px;
+                -ms-border-radius: 30px;
+                -o-border-radius: 30px;
+                border-radius: 30px;
+                padding: 7px 15px;
+                font-weight: 600;
+            }
+
+    .job-status-bar {
+        float: left;
+        width: 100%;
+        padding: 15px 20px;
+    }
+
+        .job-status-bar > a {
+            float: right;
+            color: #b2b2b2;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+
+    .like-com {
+        float: left;
+    }
+
+        .like-com li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+            .like-com li a {
+                color: #b2b2b2;
+                font-size: 14px;
+                float: left;
+                margin-top: 6px;
+                margin-right: 5px;
+            }
+
+            .like-com li span {
+                color: #ffffff;
+                font-size: 13px;
+                width: 30px;
+                height: 30px;
+                background-color: #e44d3a;
+                line-height: 30px;
+                -webkit-border-radius: 30px;
+                -moz-border-radius: 30px;
+                -ms-border-radius: 30px;
+                -o-border-radius: 30px;
+                border-radius: 30px;
+                float: left;
+                text-align: center;
+                font-weight: 600;
+            }
+
+            .like-com li .com {
+                position: relative;
+                top: -5px;
+            }
+
+                .like-com li .com img {
+                    margin-right: 10px;
+                }
+
+            .like-com li a i {
+                margin-right: 2px;
+                font-size: 17px;
+                position: relative;
+                top: 2px;
+            }
+
+    .job-status-bar > a i {
+        font-size: 20px;
+        margin-right: 7px;
+        position: relative;
+        top: 3px;
+    }
+
+
+
+    .ask-question, nav, .notification-box.active, nav ul li a, .user-account-settingss.active, .user-info a, .suggestion-usd > span i, .view-more > a, .tags-sec ul li a, .post-st ul li a, .ed-opts > a, .bk-links li a, .like-com li a, .user-profy > a, .slick-previous:before, .slick-nexti:before, .comment > a, .sign_link > a, .post-popup, .post-project > a, .post-project-fields form ul li button, .post-project-fields form ul li a, .sign-control li a, .cover-sec > a, .star-descp > a, .message-btn a, .pf-gallery ul li, .gallery_pt:before, .gallery_pt > a, .overview-box, .skl-name, .conv-list, .save-stngs ul li button, .forum-links.active, .react-links li a, .next-prev > a, nav ul li:hover > ul {
+        -webkit-transition: all 0.4s ease-in;
+        -moz-transition: all 0.4s ease-in;
+        -ms-transition: all 0.4s ease-in;
+        -o-transition: all 0.4s ease-in;
+        transition: all 0.4s ease-in;
+    }
+
+    .img-box {
+        border-radius: 50%;
+        width: 40px;
+        height: auto;
+    }
+
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 0px;
+    }
+
+    .text-content {
+        color: #686868;
+    }
+
+    .post-content .panel {
+        margin-bottom: 13px;
+    }
+
+    ._2a2q {
+        overflow: hidden;
+        position: relative;
+    }
+
+    ._xcx {
+        display: block;
+        position: absolute;
+    }
+
+        ._xcx:after {
+            border: 1px solid rgba(0, 0, 0, .1);
+            bottom: 0;
+            content: '';
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+    .uiScaledImageContainer {
+        position: relative;
+        overflow: hidden;
+    }
+</style>
+
+
+<div class="main-section">
+    <div class="container">
+        <div class="main-section-data">
+
+            <div class="main-ws-sec">
+
+                <div class="post-content posts-section">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        //image
+                        <div class="post-bar">
+                            <div class="post_topbar">
+                                <div class="usy-dt">
+                                    <img class="img-box" src="https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-1/p24x24/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk2-8.fna&oh=7023e83332dc29f6f77bc398d327cd55&oe=5CB508DB" alt="">
+                                    <div class="usy-name">
+                                        <h3>Krungsree Ayuthaya</h3>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;3 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="ed-opts">
+                                    <a href="Javascript:;" title="" class="ed-opts-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                    <ul class="ed-options">
+                                        <li><a href="#" title="">Edit Post</a></li>
+                                        <li><a href="#" title="">Unsaved</a></li>
+                                        <li><a href="#" title="">Unbid</a></li>
+                                        <li><a href="#" title="">Close</a></li>
+                                        <li><a href="#" title="">Hide</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="job_descp">
+                                JENNIE Blackpink Thai Fans
+                            </div>
+                            <div class="_2a2q _65sr lightgallery" style="width:100%; height:500px;">
+                                <a id="u_fetchstream_8_12" href="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-0/q84/p403x403/51287939_2033567893606987_4379298167108141056_n.jpg?_nc_cat=107&amp;_nc_ht=scontent.fbkk22-2.fna&amp;oh=54bcf5f822150656096254e7040835df&amp;oe=5CF0E480"
+                                   style="top:0px; left:0px; width: 402px; height: 500px;">
+                                    <div class="uiScaledImageContainer" style="width:402px;height:500px;">
+                                        <img class="scaledImageFitHeight img img-responsive" src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-0/q84/p403x403/51287939_2033567893606987_4379298167108141056_n.jpg?_nc_cat=107&amp;_nc_ht=scontent.fbkk22-2.fna&amp;oh=54bcf5f822150656096254e7040835df&amp;oe=5CF0E480"
+                                             style="left:-75px;" alt="ในภาพอาจจะมี 1 คน, ภาพเซลฟี่ และภาพระยะใกล้"
+                                             width="401" height="500">
+                                    </div>
+                                </a>
+                                <a class="_5dec _xcx" href="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-9/q84/s851x315/51401841_2033567916940318_3025360845744898048_n.jpg?_nc_cat=107&amp;_nc_ht=scontent.fbkk22-2.fna&amp;oh=9b3be37a7db328edf4c1ba4bd8dc36c9&amp;oe=5CFB1EC7"
+                                   data-render-location="newsstand" id="u_fetchstream_8_13"
+                                   style="top:0px; left:404px; width: 258px; height: 249px;">
+                                    <div class="uiScaledImageContainer" style="width:258px;height:249px;">
+                                        <img class="scaledImageFitWidth img" src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-9/q84/s851x315/51401841_2033567916940318_3025360845744898048_n.jpg?_nc_cat=107&amp;_nc_ht=scontent.fbkk22-2.fna&amp;oh=9b3be37a7db328edf4c1ba4bd8dc36c9&amp;oe=5CFB1EC7"
+                                             style="top:-31px;" alt="ในภาพอาจจะมี 1 คน, ภาพเซลฟี่ และภาพระยะใกล้" width="100%" height="312">
+                                    </div>
+                                </a>
+                                <a rel="theater"  class="_5dec _xcx" href="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-9/q85/s851x315/51748868_2033567953606981_2602291397264408576_n.jpg?_nc_cat=101&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=024ae158a1b5911f61521630d2293f84&amp;oe=5CFF67CC"
+                                   data-render-location="newsstand" id="u_fetchstream_8_14"
+                                   style="top:251px; left:404px; width: 258px; height: 249px;">
+                                    <div class="uiScaledImageContainer" style="width:258px;height:249px;">
+                                        <img class="scaledImageFitWidth img"
+                                             src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-9/q85/s851x315/51748868_2033567953606981_2602291397264408576_n.jpg?_nc_cat=101&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=024ae158a1b5911f61521630d2293f84&amp;oe=5CFF67CC"
+                                             style="top:-31px;" alt="ในภาพอาจจะมี 1 คน, ภาพระยะใกล้" width="100%" height="312">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="job-status-bar">
+                                <ul class="like-com">
+                                    <li>
+                                        <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
+                                        <span>25</span>
+                                    </li>
+                                    <li><a href="#" title="" class="com"><i class="fa fa-comment" aria-hidden="true"></i> Comment 15</a></li>
+                                </ul>
+                                <a><i class="fa fa-eye" aria-hidden="true"></i> Views 50</a>
+                            </div>
+                        </div>
+                        //Post meaage
+                        <div class="post-bar">
+                            <div class="post_topbar">
+                                <div class="usy-dt">
+                                    <img class="img-box" src="https://scontent.fbkk2-8.fna.fbcdn.net/v/t1.0-1/p24x24/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&_nc_ht=scontent.fbkk2-8.fna&oh=7023e83332dc29f6f77bc398d327cd55&oe=5CB508DB" alt="">
+                                    <div class="usy-name">
+                                        <h3>Anupon Chaisiri</h3>
+                                        <span><i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;3 min ago</span>
+                                    </div>
+                                </div>
+                                <div class="ed-opts">
+                                    <a href="Javascript:;" title="" class="ed-opts-open"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                                    <ul class="ed-options">
+                                        <li><a href="#" title="">Edit Post</a></li>
+                                        <li><a href="#" title="">Unsaved</a></li>
+                                        <li><a href="#" title="">Unbid</a></li>
+                                        <li><a href="#" title="">Close</a></li>
+                                        <li><a href="#" title="">Hide</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="epi-sec">
+                                <ul class="descp">
+                                    <li><i class="fa fa-th-large text-success" aria-hidden="true"></i><span>Epic Coder</span></li>
+                                    <li><i class="fa fa-paper-plane-o text-primary" aria-hidden="true"></i><span>India</span></li>
+                                </ul>
+                                <ul class="bk-links">
+                                    <li><a href="#" title=""><i class="fa fa-bookmark-o" aria-hidden="true"></i></a></li>
+                                    <li><a href="#" title=""><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="job_descp">
+                                <h3>Senior Wordpress Developer</h3>
+                                <ul class="job-dt">
+                                    <li><a href="#" title="">Full Time</a></li>
+                                    <li><span>$30 / hr</span></li>
+                                </ul>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="http://preview.themeforest.net/item/workwise-the-freelancer-and-social-networking-html-template/full_screen_preview/21647879?ref=cirvitis" title="">view more</a></p>
+                                <ul class="skill-tags">
+                                    <li><a href="#" title="">HTML</a></li>
+                                    <li><a href="#" title="">PHP</a></li>
+                                    <li><a href="#" title="">CSS</a></li>
+                                    <li><a href="#" title="">Javascript</a></li>
+                                    <li><a href="#" title="">Wordpress</a></li>
+                                </ul>
+                            </div>
+                            <div class="job-status-bar">
+                                <ul class="like-com">
+                                    <li>
+                                        <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Like</a>
+                                        <span>25</span>
+                                    </li>
+                                    <li><a href="#" title="" class="com"><i class="fa fa-comment" aria-hidden="true"></i> Comment 15</a></li>
+                                </ul>
+                                <a><i class="fa fa-eye" aria-hidden="true"></i> Views 50</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="post-content posts-interesting">
+
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <div class="panel">
+                            <div class="panel-body text-center">
+                                พื้นที่เพจที่เกี่ยวของ & น่าสนใจ @(i + 1)
+                                <br>xxxxxxxxxxxxx
+                                <br>xxxxxxxxxxxxx
+                                <br>xxxxxxxxxxxxx
+                                <br>xxxxxxxxxxxxx
+                            </div>
+                        </div>
+                    }
+                    <div class="text-content" style="font-size:15px;">
+                        <p>COM. Application &copy; @DateTime.Now.Year</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

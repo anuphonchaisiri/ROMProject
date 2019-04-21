@@ -1,0 +1,75 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/dist/sweetalert/sweetalert.css")
+@Scripts.Render("~/dist/sweetalert/sweetalert.js")
+<style>
+    .content_col {
+        height: calc(100vh - 50px);
+        margin-left: 5%;
+        width: 95%;
+        overflow: auto;
+    }
+
+    body {
+        background-color: #fff;
+    }
+
+    .panel.panel-default {
+        border-color: transparent;
+        box-shadow: none;
+    }
+
+        .panel.panel-default .panel-heading {
+            background: linear-gradient(#eeeeeebd, #eeeeeecf,#b9b4b4a8) !important;
+            position: relative;
+        }
+
+    .panel-default > .panel-heading {
+        font-weight: 800;
+    }
+
+    .panel-heading .panel-button {
+        float: right;
+        position: absolute;
+        right: 0;
+        top: 2px;
+    }
+
+
+/*modal style*/
+.modal > .modal-dialog {
+    /*width: 99%;*/
+    margin: 20px auto;
+}
+
+.modal > .modal-dialog > .modal-content {
+    height: calc(100vh - 65px);
+    border-radius: 0;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-header {
+    padding: 4px;
+    font-weight: 800;
+}
+
+.modal > .modal-dialog > .modal-content > .modal-body {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.modal > .modal-dialog .modal-footer {
+    padding: 4px;
+    background-color: transparent;
+    margin-right : -5px;
+    border:none;
+}
+    .modal > .modal-dialog > .modal-content > .modal-footer > .btn.btn-danger {
+        margin-right: 0px;
+    }
+
+
+
+</style>
+
+@RenderBody()

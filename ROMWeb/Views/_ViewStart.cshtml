@@ -1,0 +1,18 @@
+﻿@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    string cLayout = "";
+    if (("REPORT").Equals(controller,StringComparison.CurrentCultureIgnoreCase))
+    {
+        cLayout = "~/Views/Shared/_LayoutForm.cshtml";
+    }
+    else if (("PROJECT").Equals(controller, StringComparison.CurrentCultureIgnoreCase) || ("MASTER").Equals(controller, StringComparison.CurrentCultureIgnoreCase))
+    {
+        cLayout = "~/Views/Shared/_LayoutMaintain.cshtml";
+    }
+    else
+    {
+        //cLayout = "~/Views/Shared/_Layout.cshtml";
+        cLayout = "~/Views/Shared/_LayoutChat.cshtml";
+    }
+    Layout = cLayout;
+}

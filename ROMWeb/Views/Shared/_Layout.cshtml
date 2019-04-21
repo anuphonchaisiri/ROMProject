@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Resource Organization Management</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/fonts/font-awesome/css/font-awesome.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Framework/lightGallery/dist/css/lightgallery.css")
+
+    <style>
+        .posts-right {
+            overflow: auto;
+        }
+            /* width */
+            .posts-right::-webkit-scrollbar {
+                width: 5px;
+            }
+
+            /* Track */
+            .posts-right::-webkit-scrollbar-track {
+                /*box-shadow: inset 0 0 1px grey; */
+                border-radius: 5px;
+            }
+
+            /* Handle */
+            .posts-right::-webkit-scrollbar-thumb {
+                background: #999999b5;
+                border-radius: 2px;
+            }
+
+                /* Handle on hover */
+                .posts-right::-webkit-scrollbar-thumb:hover {
+                    background: #999999b5;
+                }
+    </style>
+    <style>
+        .clearfix {
+            zoom: 1;
+        }
+
+        .lfloat {
+            float: left;
+        }
+
+        .comChatTypeahead ._5l37 ._5l39 {
+            padding: 4px 12px;
+        }
+
+        ._5l37 ._5l39 {
+            margin-right: 0;
+            padding: 6px 12px;
+        }
+
+        ._4ldz {
+            position: relative;
+        }
+
+        ._4ld- {
+            align-items: center;
+            background-color: rgba(0, 0, 0, .05);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+            ._4ld- .img {
+                object-fit: cover;
+            }
+
+        img {
+            border: 0;
+        }
+
+        #list_contact_person {
+            padding: 0px;
+        }
+
+        ._225b {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5d5b5b;
+        }
+
+        ._29hk > ._225b {
+            padding: 2px 5px;
+        }
+
+        ._364g {
+            line-height: 32px;
+            overflow: hidden;
+            padding-left: 8px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #292828;
+        }
+
+        li._3h3c._5l37._1k1p:hover {
+            background-color: #cac8c885 !important;
+        }
+
+        ._568-:empty {
+            display: none;
+        }
+
+        ._568- {
+            color: #90949c;
+            display: inline-block;
+            font-size: 13px;
+            line-height: 12px;
+            vertical-align: middle;
+        }
+
+        ._568z {
+            float: right;
+            text-align: right;
+            line-height: 32px;
+            margin: 0 1px 0 4px;
+            font-family: inherit;
+            display: inline-block;
+            padding-right: 12px;
+        }
+    </style>
+</head>
+<body class="nav-sm">
+    <div class="container body">
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="">
+                @*icon*@ 
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("COM.", "Index", "", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                @* list company select*@
+                <div class="nav navbar-nav navbar-link" data-toggle="tooltip" data-placement="bottom" title="Select Company..">
+                    <li role="presentation" class="dropdown" style="min-width:300px;">
+                        <a href="javascript:;" class="dropdown-toggle user-profile info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-home" style="font-size: 20px;color:white;"></i>
+                            <span class="hidden-xs">
+                                <b>Company : </b> @ViewBag.CompanyDes
+                            </span>
+                        </a>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            @foreach (var item in (List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"])
+                            {
+                                <li>
+                                    <a href="/@item.name">
+                                        <span class="image">
+                                            <img src="~/images/user.png" alt="Company Image" />
+                                        </span>
+                                        <span>
+                                            <span class="name">
+                                                @Html.DisplayFor(modelItem => item.description)
+                                            </span>
+                                        </span>
+                                        <span class="message">
+                                            @Html.DisplayFor(modelItem => item.created_on_display)
+                                        </span>
+                                        <span class="message">
+                                            @Html.DisplayFor(modelitem => item.remark)
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+
+                            @if (ViewData["MyCompanyInfo"] == null || ((List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"]).Count <= 0)
+                            {
+                                <li>
+                                    <a href="Javacript:;" class="text-center" style="width:100%!important;font-weight:700;">
+                                        <span>
+                                            <span class="text-danger">
+                                                ไม่พบรายการ !!
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-th" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li role="presentation" class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-envelope-o"></i>
+                            <span class="badge bg-red">6</span>
+                        </a>
+                        <ul id="list-message-chat" class="dropdown-menu list-unstyled msg_list" role="menu">
+                            <li>
+                                <a>
+                                    <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <span class="image">
+                                        <img src="images/img.jpg" alt="Profile Image" />
+                                    </span>
+                                    <span>
+                                        <span>John Smith</span>
+                                        <span class="time">3 mins ago</span>
+                                    </span>
+                                    <span class="message">
+                                        Film festivals used to be do-or-die moments for movie makers. They were where...
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="text-center">
+                                    <a>
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="images/img.jpg" alt="">John Doe
+                            <span class=" fa fa-angle-down"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-usermenu pull-right">
+                            <li><a href="javascript:;">Profile</a></li>
+                            <li>
+                                <a href="javascript:;">
+                                    <span class="badge bg-red pull-right">50%</span>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                            <li><a href="javascript:;">Help</a></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div role="main">
+            <div class="left_col left_col_box">
+                <div class="left_col scroll-view">
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fa fa-users"></i>ข้อมูลทั่วไป <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="#">ข้อมูลองค์กร</a></li>
+                                        <li><a href="#">วิสัยทัศน์</a></li>
+                                        <li><a href="#">เป้าหมายองค์กร</a></li>
+                                        <li><a href="#">องค์ความรู้</a></li>
+                                        @*<li><a href="#">ข้อมูลพนักงาน</a></li>*@
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-sitemap"></i>โครงสร้างองค์กร <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("ภาพรวมองค์กร", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ฝ่ายสภา อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ฝ่ายบริหาร อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("สำนักงานปลัด อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ส่วนการคลัง อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ส่วนการศึกษา อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ส่วนการโยธา อบต.", "Index", "Home")</li>
+                                        <li>@Html.ActionLink("ส่วนสาธารณสุข อบต.", "Index", "Home")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-edit"></i>ส่วนการคลัง <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("งานการเงิน", "Index", "Report")</li>
+                                        <li>@Html.ActionLink("งานบัญชี", "Index", "Report")</li>
+                                        <li>@Html.ActionLink("งานพัฒนาและจัดเก็บรายได้", "Index", "Report")</li>
+                                        <li>@Html.ActionLink("งานทะเบียนทรัพย์สินและพัสดุ", "Index", "Report")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bar-chart-o"></i>ส่วนการโยธา <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("งานก่อสร้าง", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานออกแบบและควบคุมอาคาร", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานประสานสาธารณูปโภค", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานผังเมือง", "Index", "Project")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-clone"></i>สำนักงานปลัด อบต. <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("งานบริหารทั่วไป", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานนโยบายและแผน", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานกฎหมายและคดี", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานกิจการสภา อบต.", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานป้องกันและบรรเทาสาธารณภัย", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานส่งเสริมการท่องเที่ยว", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานสวัสดิการและพัฒนาชุมชน", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานสาธารณะสุขและสิ่งแวดล้อม", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานส่งเสริมการเกษตร", "Index", "Project")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-bug"></i>ส่วนสาธารณสุข อบต. <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("งานอนามัยและสิ่งแวดล้อม", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานส่งเสริมสุขภาพและสาธารณสุข", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานรักษาความสะอาด", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานควบคุมโรค", "Index", "Project")</li>
+                                        <li>@Html.ActionLink("งานบริการสาธารณสุข", "Index", "Project")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-windows"></i>ส่วนการศึกษา อบต. <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>@Html.ActionLink("งานส่งเสริมการศึกษา ศาสนาและวัฒนธรรม", "User", "Master")</li>
+                                        <li>@Html.ActionLink("งานกิจการโรงเรียน", "BudgetPlan", "Master")</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="Javascript:;" class="btn-admin-conf">
+                                        <i class="fa fa-laptop"></i>ผู้ดูแลระบบ
+                                        <span class="label label-success pull-right">
+                                            จัดการตั้งค่าระบบ
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @Scripts.Render("~/Scripts/jquery-3.3.1.min.js")
+            @RenderSection("scripts", required: false)
+            @Scripts.Render("~/Scripts/bootstrap.js")
+            @Scripts.Render("~/Scripts/Site.js")
+
+            <div class="content_col">
+                @RenderBody()
+            </div>
+            <div class="content_slide content-admin-system">
+                <div style="padding-top:5px;">
+                    <div class="row">
+                        <div class="col-md-8"></div>
+                        <div class="col-md-4">
+                            <input type="text" id="txtSearchMasterListData" class="form-control input-sm" placeholder="ค้นหา..." />
+                        </div>
+                    </div>
+                </div>
+
+                <div id="list-document-master" style="padding-top:10px;">
+                    <div class="row">
+                        <div class="col-md-3 list-box">
+                            <a href="@Url.Action("Employee","Master")" class="panel-box-list">
+                                <span class="icon">
+                                    <i class="fa fa-file-text"></i>
+                                </span>
+                                <span class="name">
+                                    จัดการข้อมูลพนักงาน
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 list-box">
+                            <a href="@Url.Action("User","Master")" class="panel-box-list">
+                                <span class="icon">
+                                    <i class="fa fa-file-text"></i>
+                                </span>
+                                <span class="name">
+                                    จัดการข้อมูลผู้ใช้งาน
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-md-3 list-box">
+                            <a href="@Url.Action("Account","Master")" class="panel-box-list">
+                                <span class="icon">
+                                    <i class="fa fa-file-text"></i>
+                                </span>
+                                <span class="name">
+                                    จัดการข้อมูลบัญชี
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.btn-admin-conf').bind('click', function () {
+                $(this).closest('body').toggleClass('admin-active');
+            });
+
+            $("#txtSearchMasterListData").filterDocumentList('list-document-master');
+
+        });
+
+        $.fn.filterDocumentList = function (panelid) {
+
+            var textbox = $(this);
+            textbox.keyup(function () {
+                var data = $(this).val();
+                //create a jquery object of the rows
+                var box = $("#" + panelid).find('.list-box');
+                var jo = $("#" + panelid).find(".name");
+                if (data == "") {
+                    jo.each(function () {
+                        $(this).html($(this).find(".smart-search-value").html());
+                    });
+                    box.show();
+                    return;
+                }
+                //hide all the rows
+                box.hide();
+
+                //filter the jquery object to get results.
+                jo.each(function () {
+                    var value = $(this).find(".smart-search-value").length <= 0 ? $(this).html() : $(this).find(".smart-search-value").html();
+                    if (value.toLowerCase().match(data.toLowerCase())) {
+                        var valuehili = highlight(value, data);
+                        $(this).html(valuehili);
+                        $(this).append("<span class='smart-search-value  hide'>" + value + "</span>");
+                        $(this).closest('.list-box').show();
+                    }
+                });
+            });
+
+            function highlight(data, search) {
+                return data.replace(new RegExp("(" + preg_quote(search) + ")", 'gi'), "<span style='background:yellow'>$1</span>");
+            }
+
+            function preg_quote(str) {
+                return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+            }
+        }
+
+        //$.fn.filterRowsInTableDocument = function (tableid) {
+        //    //split the current value of searchInput
+        //    var textbox = $(this);
+        //    textbox.keyup(function () {
+        //        var data = $(this).val();
+        //        //create a jquery object of the rows
+        //        var jo = $("#" + tableid).find("tbody tr");
+        //        if (data == "") {
+        //            $("#" + tableid).find("tbody tr td").each(function () {
+        //                $(this).html($(this).find(".smart-search-value").html());
+        //            });
+        //            jo.show();
+        //            return;
+        //        }
+        //        //hide all the rows
+        //        jo.hide();
+
+        //        //Recusively filter the jquery object to get results.
+        //        for (var i = 0; i < jo.length; i++) {
+        //            var tdfilter = $(jo[i]).find("td");
+        //            var isshow = false;
+        //            tdfilter.each(function () {
+        //                var value = $(this).find(".smart-search-value").length <= 0 ? $(this).html() : $(this).find(".smart-search-value").html();
+        //                if (value.toLowerCase().match(data.toLowerCase())) {
+        //                    var valuehili = highlight(value, data);
+        //                    $(this).html(valuehili);
+        //                    $(this).append("<span class='smart-search-value  hide'>" + value + "</span>")
+        //                    isshow = true;
+        //                }
+        //                else {
+        //                    $(this).html(value);
+        //                }
+        //            });
+
+        //            if (isshow) {
+        //                $(jo[i]).show();
+        //            }
+        //        }
+        //    });
+
+        //    function highlight(data, search) {
+        //        return data.replace(new RegExp("(" + preg_quote(search) + ")", 'gi'), "<span style='background:yellow'>$1</span>");
+        //    }
+
+        //    function preg_quote(str) {
+        //        return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+        //    }
+        //}
+        
+    </script>
+</body>
+</html>

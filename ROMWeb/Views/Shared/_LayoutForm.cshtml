@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+
+<html dir="report">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 user-scalable=yes">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="www.focusonesoftware.com" />
+    <link rel="shortcut icon" href="/images/Link-Final-Renew.png?vs=1" />
+    <title>@ViewBag.Title - Resource Organization Management</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/fonts/font-awesome/css/font-awesome.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/report.css")
+    <style>
+
+        #toolbarSidebar > a > .navbar-brand, #toolbarViewerLeft > a > .navbar-brand {
+            color: #515356 !important;
+        }
+    </style>
+</head>
+<body style="overflow: hidden;">
+    <div id="outerContainer" class="">
+        <div class="sidebarContainer">
+            <div id="toolbarSidebar">
+                <a style="width: 80px !important;" href="/">
+                    <div class="navbar-inverse" style="width: 74px; height: 32px;padding-top: 5px;text-align:center;">COM.</div>
+                </a>
+            </div>
+            <div id="sidebarContent"></div>
+        </div>
+        <div id="mainContainer">
+            <div class="toolbar">
+                <div id="toolbarContainer">
+                    <div id="toolbarViewer">
+                        <div id="toolbarViewerLeft">
+                            <a style="width: 80px !important; padding-right: 2px;" href="/">
+                                <div class="navbar-inverse" style="width: 74px; height: 32px;padding-top: 5px;text-align:center;">COM.</div>
+                            </a>
+                            <button id="sidebarToggle" class=" fa fa-trello toolbarButton" title="Toggle Sidebar" style="margin-left: 5px;"><span data-l10n-id="toggle_sidebar_label"></span></button>
+                            <div class="toolbarButtonSpacer"></div>
+                            <div class="splitToolbarButton hiddenSmallView">
+                                <button class="fa fa-minus toolbarButton" title="Previous Page" id="previous" onclick="scollingpagereportSelectedClick(-1)"><span data-l10n-id="previous_label">Previous</span> </button>
+                                <div class="splitToolbarButtonSeparator"></div>
+                                <button class="fa fa-plus toolbarButton" title="Next Page" id="next" onclick="scollingpagereportSelectedClick(1)"><span data-l10n-id="next_label">Next</span>  </button>
+                            </div>
+                            <input type="number" id="pageNumber" onchange="scollingpagereportSelected(this);" class="toolbarField pageNumber" title="Page" value="1" size="4" min="1" tabindex="15" data-l10n-id="page">
+                            <span id="numPages" class="toolbarLabel">of 1</span>
+
+                        </div>
+                        <div id="toolbarViewerMiddle">
+                            <div class="splitToolbarButton">
+                                <button id="zoomIn" class="fa fa-search-plus toolbarButton zoomIn" title="Select Zoom"><span data-l10n-id="zoom_in_label">Select Zoom</span>   </button>
+                            </div>
+                            <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                                <select id="scaleSelect" onchange="zoomDataPageA4ForSelected(this);" data-zoom="1" title="Zoom">
+                                    <option title="" value="0.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 50 }'>50%</option>
+                                    <option title="" value="0.75" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 75 }'>75%</option>
+                                    <option title="" value="1" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 100 }' selected="selected">100%</option>
+                                    <option title="" value="1.25" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale" : 125 }'>125%</option>
+                                    <option title="" value="1.5" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale" 150 }'>150%</option>
+                                    <option title="" value="2" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale": 200 }'>200%</option>
+                                    <option title="" value="3" data-l10n-id="page_scale_percent" data-l10n-args='{ "scale":300 }'>300%</option>
+                                    <option title="" value="4" data-l10n-id='page_scale_percent' data-l10n-args='{ "scale": 400 }'>400%</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div id="toolbarViewerRight">
+                            <button id="navBtnFindData" class="hide fa fa-search toolbarButton" title="Find in Document"><span data-l10n-id="findbar_label">Find</span> </button>
+                            <button id="navBtnApprove" class="hide fa fa-user-circle-o toolbarButton" title="Workflow Approve"><span data-l10n-id="findbar_label">Workflow</span> </button>
+
+                            <button id="presentationMode" class="fa fa-arrows-alt toolbarButton print hiddenMediumView" title="View"><span data-l10n-id="print_label">View</span> </button>
+                            <button id="presentationModeClose" class="fa fa-reply toolbarButton print hiddenMediumView" title="Close View"><span data-l10n-id="print_label">View Close</span> </button>
+                            <button id="print" onclick="printPageformToPrinter(this);" class="fa fa-print toolbarButton print hiddenMediumView" title="Print"><span data-l10n-id="print_label">Print</span>  </button>
+                            <button id="download" onclick="exportReportWord();" class="fa fa-file-word-o toolbarButton download hiddenMediumView" title="Download"><span data-l10n-id="download_label">Download</span>  </button>
+                            <div class="verticalToolbarSeparator hiddenSmallView"></div>
+                            <button id="secondaryToolbarToggle" onclick="$('#secondaryToolbar').toggleClass('hide');" class="toolbarButton" title="Profile">
+                                <asp:Panel runat="server" ID="ProfileImageNav" CssClass="image-box smart-popup-img-icon z-depth-1" Style="height: 20px;"></asp:Panel>
+
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="secondaryToolbar" class="secondaryToolbar hide doorHangerRight">
+                <div id="secondaryToolbarButtonContainer">
+                    <button id="firstPage" class="secondaryToolbarButton firstPage" title="Profile" tabindex="56" data-l10n-id="first_page">
+
+                        <asp:Panel runat="server" ID="ProfileImageCard" CssClass="image-box smart-popup-img-icon" Style="width: 20px; height: 20px; margin-top: 2px; float: left; margin-right: 15px;">
+                        </asp:Panel>
+                        &nbsp;
+                        <div style="margin-top: -10px">
+                            <asp:Label ID="lbName" runat="server"></asp:Label>
+                        </div>
+                    </button>
+                    <div class="horizontalToolbarSeparator"></div>
+
+                    <button class="secondaryToolbarButton" title="เปลี่ยนระหัสผ่าน" tabindex="62" data-l10n-id="document_properties" style="padding-left: 14px;">
+                        <a href="/Account/ChangePassword.aspx"><i class="fa fa-key"></i>&nbsp;&nbsp;เปลี่ยนระหัสผ่าน</a>
+                    </button>
+                    <button class="secondaryToolbarButton" title="ออกจากระบบ" tabindex="62" data-l10n-id="document_properties" style="padding-left: 14px;">
+                        <a href="/Logout.aspx"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;ออกจากระบบ</a>
+                    </button>
+                </div>
+            </div>
+
+            <div id="viewerContainer" tabindex="0" class="">
+                <form id="form1">
+                    <div>
+                        @RenderBody()
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/jquery-3.3.1.min.js")
+    @*@Scripts.Render("~/Scripts/bootstrap.min.js")*@
+    @Scripts.Render("~/Scripts/Site.js")
+    @Scripts.Render("~/Scripts/html2canvas.min.js")
+    @Scripts.Render("~/Scripts/report.js")
+
+    <script>
+        $(document).ready(function () {
+            rebindDefaultReport();
+        });
+    </script>
+</body>
+</html>

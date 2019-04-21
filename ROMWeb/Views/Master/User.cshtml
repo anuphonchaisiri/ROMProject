@@ -1,0 +1,93 @@
+﻿@model IEnumerable<ROM.Models.UserModel>
+
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_LayoutMaintain.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <span class="text-primary">@ViewBag.Title.</span>
+        <div class="panel-button">
+            <span class="btn btn-success" onclick="$('#modalUserDataDetail').modal('show');"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;เพิ่มรายการ</span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered">
+                <thead>
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CountryName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.RegionName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartDate)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CountryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.RegionName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StartDate)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+  
+<div class="modal fade" id="modalUserDataDetail" data-backdrop="static" role="dialog">
+    <div class="modal-dialog" style="width:99%;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="text-primary">ข้อมูลส่วนตัวผู้ใช้งาน</span>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+                @for (int item = 0; item < 50; item++)
+                {
+                    <div>Some text in the modal.@item</div>
+                }
+            </div>
+            <div class="modal-footer text-right">
+                <button type="button" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;บันทึก</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="$('#modalUserDataDetail').modal('hide');"><i class="fa fa-times-circle"></i>&nbsp;ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+</div>
