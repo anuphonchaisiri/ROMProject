@@ -1,0 +1,9 @@
+D:\ROMProject\Controller\COMUtil\bin\Debug\COMUtil.dll
+D:\ROMProject\Controller\COMUtil\bin\Debug\COMUtil.pdb
+D:\ROMProject\Controller\COMUtil\bin\Debug\Newtonsoft.Json.dll
+D:\ROMProject\Controller\COMUtil\bin\Debug\Newtonsoft.Json.xml
+D:\ROMProject\Controller\COMUtil\obj\Debug\COMUtil.csproj.CoreCompileInputs.cache
+D:\ROMProject\Controller\COMUtil\obj\Debug\COMUtil.csproj.CopyComplete
+D:\ROMProject\Controller\COMUtil\obj\Debug\COMUtil.dll
+D:\ROMProject\Controller\COMUtil\obj\Debug\COMUtil.pdb
+D:\ROMProject\Controller\COMUtil\obj\Debug\COMUtil.csprojAssemblyReference.cache
