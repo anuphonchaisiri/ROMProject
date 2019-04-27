@@ -271,11 +271,11 @@ table > thead > tr {
     border-right: 5px solid #1ABB9C
 }
 
-    .nav-sm ul.nav.child_menu ul, .nav-sm .nav.side-menu li.active-sm ul ul {
-        position: static;
-        width: 200px;
-        background: none
-    }
+.nav-sm ul.nav.child_menu ul, .nav-sm .nav.side-menu li.active-sm ul ul {
+    position: static;
+    width: 200px;
+    background: none;
+}
 
 .nav-sm > .nav.side-menu > li.active-sm > a {
     color: #1ABB9C !important
@@ -291,6 +291,41 @@ table > thead > tr {
     width: 100% !important;
     /*margin-bottom: 5px*/
 }
+
+.nav.side-menu > li {
+    position: relative;
+    display: block;
+    cursor: pointer
+}
+
+.nav.side-menu > li > a {
+    margin-bottom: 6px
+}
+
+.nav.side-menu > li > a:hover {
+    color: #F2F5F7 !important
+}
+
+.nav.side-menu > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background: transparent
+}
+
+.nav.side-menu > li.current-page {
+    border-right: 5px solid #1ABB9C
+}
+
+.nav.side-menu > li.active > a {
+    text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
+    background: linear-gradient(#334556, #3394f1),#2A3F54;
+    box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0
+}
+
+.nav.side-menu > li > a, .nav.child_menu > li > a {
+    color: #E7E7E7;
+    font-weight: 500
+}
+
 
 .nav-sm ul.nav.child_menu {
     left: 100%;
@@ -317,6 +352,9 @@ table > thead > tr {
 
 .menu_section {
     margin-bottom: 35px
+}
+.menu_section > .nav.side-menu {
+    margin-top : 10px;
 }
 
 .menu_section h3 {
@@ -822,24 +860,6 @@ a {
         margin-top: 0
     }
 
-.nav.side-menu > li {
-    position: relative;
-    display: block;
-    cursor: pointer
-}
-
-    .nav.side-menu > li > a {
-        margin-bottom: 6px
-    }
-
-        .nav.side-menu > li > a:hover {
-            color: #F2F5F7 !important
-        }
-
-        .nav.side-menu > li > a:hover, .nav > li > a:focus {
-            text-decoration: none;
-            background: transparent
-        }
 
 .nav.child_menu {
     display: none
@@ -876,11 +896,6 @@ a {
     top: 0
 }
 
-.nav.side-menu > li > a, .nav.child_menu > li > a {
-    color: #E7E7E7;
-    font-weight: 500
-}
-
 .nav.child_menu li li:hover, .nav.child_menu li li.active {
     background: none
 }
@@ -895,9 +910,6 @@ a {
     padding: 13px 15px 12px
 }
 
-.nav.side-menu > li.current-page {
-    border-right: 5px solid #1ABB9C
-}
 
 .nav li.current-page {
     background: rgba(255,255,255,0.05)
@@ -909,12 +921,6 @@ a {
 
 .nav li li.current-page a {
     color: #fff
-}
-
-.nav.side-menu > li.active > a {
-    text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
-    background: linear-gradient(#334556, #3394f1),#2A3F54;
-    box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0
 }
 
 .site_title {
