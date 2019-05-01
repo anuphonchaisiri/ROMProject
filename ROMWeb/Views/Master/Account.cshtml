@@ -110,33 +110,7 @@
                 $tr = $(obj).closest('tr');
                 var datapost = {};
                 datapost.account_code = $tr.data("code");
-
-                $.ajax({
-                    type: "POST",  // type of request
-                    url: "AccountDelete", // resource file with extension
-                    data: datapost,
-                    success: callbackDelete, // callback function, called when Ajax operation is complete
-                    statusCode: {
-                        404: function () {
-                            AlertLoading(false);
-                            AlertError("page not found");
-                        }
-                    },
-                    error: function (xhr, reason, exMessage) {
-                        AlertLoading(false);
-                        if (xhr.status === 555) {
-                            AlertError(exMessage);
-                        }
-                        if (xhr.status === 404) {
-                            AlertError("page not found");
-                        }
-                        else
-                        {
-                            AlertError(reason + "[" + xhr.status + "] : " + exMessage);
-                        }
-                    }
-                }); 
-                
+                PostTransectionsAPI("AccountDelete", datapost, callbackDelete);
             }
         }
         
@@ -160,30 +134,8 @@
                 datapost.account_code = $("#txtCode").val();
                 datapost.account_name = $("#txtName").val();
                 var urlAction = $("#modeAction").val() == "create" ? "AccountCraete" : "AccountUpdate";
-
                 AlertLoading(true, 'กำลังสร้างรายการ');
-                $.ajax({
-                    type: "POST",  // type of request
-                    url: urlAction, // resource file with extension
-                    data: datapost,
-                    success: callbackSuccess, // callback function, called when Ajax operation is complete
-                    statusCode: {
-                        404: function () {
-                            AlertLoading(false);
-                            AlertError("page not found");
-                        }
-                    },
-                    error: function (xhr, reason, exMessage) {
-                        AlertLoading(false);
-                        if (xhr.status === 555) {
-                            AlertError(exMessage);
-                        }
-                        else {
-                            AlertError(reason + "[" + xhr.status + "] : " + exMessage);
-                        }
-                        
-                    }
-                }); 
+                PostTransectionsAPI(urlAction, datapost, callbackSuccess);
             }
         }
         

@@ -126,7 +126,7 @@ $(".bulk_action input").on("ifChecked", function () {
     });
 }));
 
-
+//---------------------------------- Framework number format ---------------------------------------
 //onchange="IsFormatNumber(this);"
 function IsFormatNumber(obj) {
     var formatValue = new NumberFormat($(obj).val());
@@ -153,3 +153,41 @@ function IsKeyNumber(evt) {
         if (theEvent.preventDefault) theEvent.preventDefault();
     }
 }
+
+//---------------------------------- Framework Post Data --------------------------------------------
+function PostTransectionsAPI(nameUrlAPI, datapost, callbackFunction) {
+    var callBack = undefined;
+    callbackFunction == "" || callbackFunction == null ? undefined : callbackFunction;
+    try {
+        //Set function CallBack
+        if (callbackFunction) {
+            callBack = eval(callbackFunction);
+        }
+    } catch (e) { }
+
+    $.ajax({
+        type: "POST",  // type of request
+        url: nameUrlAPI,// funtion name // resource file with extension
+        data: datapost,
+        success: callBack,//after success call function , callBack is // callback function, called when Ajax operation is complete 
+        statusCode: {
+            404: function () {
+                AlertLoading(false);
+                AlertError("page not found");
+            }
+        },
+        error: function (xhr, reason, exMessage) {
+            AlertLoading(false);
+            if (xhr.status === 555) {
+                AlertError(exMessage);
+            }
+            if (xhr.status === 404) {
+                AlertError("page not found");
+            }
+            else {
+                AlertError(reason + "[" + xhr.status + "] : " + exMessage);
+            }
+        }
+    }); 
+}
+
