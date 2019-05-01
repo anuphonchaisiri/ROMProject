@@ -11,9 +11,13 @@ namespace ROM.Controllers
 {
     public class TemplateController : Controller
     {
-
         public TemplateController()
         {
+            if (System.Web.HttpContext.Current.Request.RequestType == "POST")
+            {
+                return;
+            }
+
             //TODO Test login
             if (string.IsNullOrEmpty(AuthUser.UserId))
             {
