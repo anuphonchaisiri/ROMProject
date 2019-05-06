@@ -5,14 +5,17 @@
     {
         cLayout = "~/Views/Shared/_LayoutForm.cshtml";
     }
-    else if (("PROJECT").Equals(controller, StringComparison.CurrentCultureIgnoreCase) || ("MASTER").Equals(controller, StringComparison.CurrentCultureIgnoreCase))
+    else if (("HOME").Equals(controller, StringComparison.CurrentCultureIgnoreCase))
     {
-        cLayout = "~/Views/Shared/_LayoutMaintain.cshtml";
+        cLayout = "~/Views/Shared/_LayoutChat.cshtml";
     }
+    //else if (("PROJECT").Equals(controller, StringComparison.CurrentCultureIgnoreCase) || ("MASTER").Equals(controller, StringComparison.CurrentCultureIgnoreCase))
+    //{
+    //    cLayout = "~/Views/Shared/_LayoutMaintain.cshtml";
+    //}
     else
     {
-        //cLayout = "~/Views/Shared/_Layout.cshtml";
-        cLayout = "~/Views/Shared/_LayoutChat.cshtml";
+        cLayout = "~/Views/Shared/_LayoutMaintain.cshtml";
     }
     Layout = cLayout;
 }
