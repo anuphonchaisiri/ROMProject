@@ -170,6 +170,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
@@ -356,9 +357,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="fonts\font-awesome\.bower.json" />
-    <Content Include="fonts\font-awesome\.gitignore" />
-    <Content Include="fonts\font-awesome\.npmignore" />
     <Content Include="fonts\font-awesome\bower.json" />
     <Content Include="fonts\font-awesome\css\font-awesome.css.map" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
@@ -493,6 +491,7 @@
     <Content Include="Views\Master\Account.cshtml" />
     <Content Include="Views\Master\Employee.cshtml" />
     <Content Include="Views\Shared\_LayoutChat.cshtml" />
+    <Content Include="Views\Company\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
