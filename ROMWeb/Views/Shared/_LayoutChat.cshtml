@@ -4,111 +4,114 @@
 @Scripts.Render("~/Framework/lightGallery/dist/js/lightgallery-all.min.js")
 @Scripts.Render("~/Framework/lightGallery/lib/jquery.mousewheel.min.js")
 
-    <div class="posts-right">
-        <div class="comChatTypeahead flipped">
-            <div class="_11_d _4p-s">
-                <div class="_29hk">
-                    <div class="_225b">การสนทนากลุ่ม</div>
-                    <ul id="list_contact_person" role="listbox" class="_29hl">
-                        @for (int i = 0; i < 3; i++)
-                        {
-                            <li class="_3h3c _5l37 _1k1p" role="option">
-                                <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
-                                    <div class="clearfix" direction="left">
-                                        <div class="_5bon">
-                                            <div class="_568z">
-                                                <div class="_568-"></div>
-                                                <span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>
-                                            </div>
+@Styles.Render("~/dist/sweetalert/sweetalert.css")
+@Scripts.Render("~/dist/sweetalert/sweetalert.js")
+
+<div class="posts-right">
+    <div class="comChatTypeahead flipped">
+        <div class="_11_d _4p-s">
+            <div class="_29hk">
+                <div class="_225b">การสนทนากลุ่ม</div>
+                <ul id="list_contact_person" role="listbox" class="_29hl">
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <li class="_3h3c _5l37 _1k1p" role="option">
+                            <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
+                                <div class="clearfix" direction="left">
+                                    <div class="_5bon">
+                                        <div class="_568z">
+                                            <div class="_568-"></div>
+                                            <span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>
                                         </div>
-                                        <div class="_ohe lfloat">
-                                            <div class="_5l39 _5rmm">
-                                                <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
-                                                    <div class="_4ld-" style="height: 32px; width: 32px;">
-                                                        <img class="img" alt="" src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-1/p50x50/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=d807c3109d88932c919285cb980f9a04&amp;oe=5CB78DDF" height="32" width="32">
-                                                    </div>
+                                    </div>
+                                    <div class="_ohe lfloat">
+                                        <div class="_5l39 _5rmm">
+                                            <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
+                                                <div class="_4ld-" style="height: 32px; width: 32px;">
+                                                    <img class="img" alt="" src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-1/p50x50/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=d807c3109d88932c919285cb980f9a04&amp;oe=5CB78DDF" height="32" width="32">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="">
-                                            <div class="_5l38 _42ef">
-                                                <div class="_364g">Anupon Chaisiri</div>
-                                            </div>
+                                    </div>
+                                    <div class="">
+                                        <div class="_5l38 _42ef">
+                                            <div class="_364g">Anupon Chaisiri</div>
                                         </div>
                                     </div>
-                                </a>
-                            </li>
-                        }
+                                </div>
+                            </a>
+                        </li>
+                    }
 
-                    </ul>
-                    <div class="_225b">ผู้ติดต่อ (10)</div>
-                    <ul id="list_contact_person" role="listbox" class="_29hl">
-                        @for (int i = 0; i < 5; i++)
-                        {
-                            <li class="_3h3c _5l37 _1k1p" role="option">
-                                <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
-                                    <div class="clearfix" direction="left">
-                                        <div class="_5bon">
-                                            <div class="_568z">
-                                                <div class="_568-"></div>
-                                                <span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>
-                                            </div>
+                </ul>
+                <div class="_225b">ผู้ติดต่อ (10)</div>
+                <ul id="list_contact_person" role="listbox" class="_29hl">
+                    @for (int i = 0; i < 5; i++)
+                    {
+                        <li class="_3h3c _5l37 _1k1p" role="option">
+                            <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
+                                <div class="clearfix" direction="left">
+                                    <div class="_5bon">
+                                        <div class="_568z">
+                                            <div class="_568-"></div>
+                                            <span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>
                                         </div>
-                                        <div class="_ohe lfloat">
-                                            <div class="_5l39 _5rmm">
-                                                <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
-                                                    <div class="_4ld-" style="height: 32px; width: 32px;">
-                                                        <img class="img" alt="" src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-1/p50x50/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=d807c3109d88932c919285cb980f9a04&amp;oe=5CB78DDF" height="32" width="32">
-                                                    </div>
+                                    </div>
+                                    <div class="_ohe lfloat">
+                                        <div class="_5l39 _5rmm">
+                                            <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
+                                                <div class="_4ld-" style="height: 32px; width: 32px;">
+                                                    <img class="img" alt="" src="https://scontent.fbkk22-1.fna.fbcdn.net/v/t1.0-1/p50x50/1928751_699432366863187_7764255518241631185_n.jpg?_nc_cat=100&amp;_nc_ht=scontent.fbkk22-1.fna&amp;oh=d807c3109d88932c919285cb980f9a04&amp;oe=5CB78DDF" height="32" width="32">
                                                 </div>
                                             </div>
-                                        </div><div class="">
-                                            <div class="_5l38 _42ef">
-                                                <div class="_364g">Anupon Chaisiri</div>
-                                            </div>
+                                        </div>
+                                    </div><div class="">
+                                        <div class="_5l38 _42ef">
+                                            <div class="_364g">Anupon Chaisiri</div>
                                         </div>
                                     </div>
-                                </a>
-                            </li>
-                            <li class="_3h3c _5l37 _1k1p" role="option">
-                                <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
-                                    <div class="clearfix" direction="left">
-                                        <div class="_5bon">
-                                            <div class="_568z">
-                                                <div class="_568-">2 ชั่วโมง</div>
-                                                @*<span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>*@
-                                            </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="_3h3c _5l37 _1k1p" role="option">
+                            <a class="_5f0v" tabindex="0" aria-hidden="false" data-testid="RTCPickerDialogContactListItem100003892903804" href="#">
+                                <div class="clearfix" direction="left">
+                                    <div class="_5bon">
+                                        <div class="_568z">
+                                            <div class="_568-">2 ชั่วโมง</div>
+                                            @*<span aria-label="กำลังใช้งานอยู่" style="background: rgb(66, 183, 42); border-radius: 50%; display: inline-block; height: 6px; margin-left: 4px; width: 6px;border: solid 3.5px rgb(66, 183, 42);"></span>*@
                                         </div>
-                                        <div class="_ohe lfloat">
-                                            <div class="_5l39 _5rmm">
-                                                <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
-                                                    <div class="_4ld-" style="height: 32px; width: 32px;">
-                                                        <img class="img" alt="" src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-1/p50x50/42304093_1880138268745655_479177492486160384_n.jpg?_nc_cat=106&_nc_ht=scontent.fbkk22-2.fna&oh=2103f8a794638ba9ffbd24b4c67c1522&oe=5CF47754" height="32" width="32">
-                                                    </div>
+                                    </div>
+                                    <div class="_ohe lfloat">
+                                        <div class="_5l39 _5rmm">
+                                            <div class="_4ldz" aria-hidden="true" style="height: 32px; width: 32px;">
+                                                <div class="_4ld-" style="height: 32px; width: 32px;">
+                                                    <img class="img" alt="" src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-1/p50x50/42304093_1880138268745655_479177492486160384_n.jpg?_nc_cat=106&_nc_ht=scontent.fbkk22-2.fna&oh=2103f8a794638ba9ffbd24b4c67c1522&oe=5CF47754" height="32" width="32">
                                                 </div>
                                             </div>
-                                        </div><div class="">
-                                            <div class="_5l38 _42ef">
-                                                <div class="_364g">sukanya Au-pong</div>
-                                            </div>
+                                        </div>
+                                    </div><div class="">
+                                        <div class="_5l38 _42ef">
+                                            <div class="_364g">sukanya Au-pong</div>
                                         </div>
                                     </div>
-                                </a>
-                            </li>
+                                </div>
+                            </a>
+                        </li>
 
-                        }
+                    }
 
-                    </ul>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
-    @RenderBody()
+</div>
+@RenderBody()
 
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('.lightgallery').lightGallery();
-           
+
     });
 </script>

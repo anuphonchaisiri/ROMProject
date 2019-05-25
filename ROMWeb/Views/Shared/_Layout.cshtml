@@ -128,7 +128,7 @@
     <div class="container body">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="">
-                @*icon*@ 
+                @*icon*@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -147,29 +147,31 @@
                             </span>
                         </a>
                         <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                            @foreach (var item in (List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"])
+                            @if (ViewData["MyCompanyInfo"] != null && ((List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"]).Count > 0)
                             {
-                                <li>
-                                    <a href="/@item.name">
-                                        <span class="image">
-                                            <img src="~/images/user.png" alt="Company Image" />
-                                        </span>
-                                        <span>
-                                            <span class="name">
-                                                @Html.DisplayFor(modelItem => item.description)
+                                foreach (var item in (List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"])
+                                {
+                                    <li>
+                                        <a href="/@item.name">
+                                            <span class="image">
+                                                <img src="~/images/user.png" alt="Company Image" />
                                             </span>
-                                        </span>
-                                        <span class="message">
-                                            @Html.DisplayFor(modelItem => item.created_on_display)
-                                        </span>
-                                        <span class="message">
-                                            @Html.DisplayFor(modelitem => item.remark)
-                                        </span>
-                                    </a>
-                                </li>
+                                            <span>
+                                                <span class="name">
+                                                    @Html.DisplayFor(modelItem => item.description)
+                                                </span>
+                                            </span>
+                                            <span class="message">
+                                                @Html.DisplayFor(modelItem => item.created_on_display)
+                                            </span>
+                                            <span class="message">
+                                                @Html.DisplayFor(modelitem => item.remark)
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
                             }
-
-                            @if (ViewData["MyCompanyInfo"] == null || ((List<COMLibrary.Model.Company.CompanyInfoModel>)ViewData["MyCompanyInfo"]).Count <= 0)
+                            else
                             {
                                 <li>
                                     <a href="Javacript:;" class="text-center" style="width:100%!important;font-weight:700;">
@@ -265,7 +267,9 @@
                     </li>
                     <li class="">
                         <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <img src="images/img.jpg" alt="">John Doe
+                            <img src="images/img.jpg" alt="">
+                            @ROM.Service.AuthUser.FullName
+                            @*John Doe*@
                             <span class=" fa fa-angle-down"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -277,7 +281,7 @@
                                 </a>
                             </li>
                             <li><a href="javascript:;">Help</a></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
+                            <li><a href="@Url.Action("Logout","Login")"><i class="fa fa-sign-out pull-right"></i>Log Out</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -431,9 +435,9 @@
 
             </div>
         </div>
-        
+
     </div>
-    
+
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -532,7 +536,36 @@
         //        return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
         //    }
         //}
-        
+
     </script>
+
+
+    @if (ViewBag.MessageSuccess != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                AlertSuccess('@ViewBag.MessageSuccess');
+            };
+        </script>
+    }
+
+    @if (ViewBag.MessageError != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                AlertError('@ViewBag.MessageError');
+            };
+        </script>
+    }
+
+    @if (ViewBag.MessageInfo != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                AlertInfo('@ViewBag.MessageInfo');
+            };
+        </script>
+    }
+
 </body>
 </html>

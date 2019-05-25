@@ -13,28 +13,50 @@ namespace ROM.Controllers
     {
         public TemplateController()
         {
+
             if (System.Web.HttpContext.Current.Request.RequestType == "POST")
             {
                 return;
             }
 
-            //TODO Test login
+            string CompName = AuthUser.Company;
             if (string.IsNullOrEmpty(AuthUser.UserId))
             {
-                AuthUser.Login("romadmin", "1q2w3e4r5t");
+                System.Web.HttpContext.Current.Response.Redirect("~/"+ CompName + "/Login", false);
+                return;
             }
-            //end
             
-            string CompName = Convert.ToString(System.Web.HttpContext.Current.Request.RequestContext.RouteData.Values["company"]);
             SetSystemIDControl(CompName);
         }
 
+        //ใช้การณี ajax call API
         public ActionResult ExceptionError(string message)
         {
             return new HttpStatusCodeResult(555, message);
         }
 
+        #region //ใช้กรณี Alert ออกทางหน้าจอ ***หน้าจอ view botton submit form
 
+        public ActionResult AlertSuccess(string message)
+        {
+            ViewBag.MessageSuccess = message;
+            return View();
+        }
+
+        public ActionResult AlertError(string message)
+        {
+            ViewBag.MessageError = message;
+            return View();
+        }
+
+        public ActionResult AlertInfo(string message)
+        {
+            ViewBag.MessageInfo = message;
+            return View();
+        }
+
+        #endregion
+        
         #region Private  Set Value
 
         private void SetSystemIDControl(string CompName)
@@ -66,9 +88,16 @@ namespace ROM.Controllers
                     AuthUser.SetAuthPublic(company);
                 }
             }
-            ViewBag.CompanyName = company.name;
-            ViewBag.CompanyDes = company.description;
-            ViewData["MyCompanyInfo"] = listcompany;
+            if (company != null)
+            {
+                ViewBag.CompanyName = company.name;
+                ViewBag.CompanyDes = company.description;
+                ViewData["MyCompanyInfo"] = listcompany;
+            }
+            else
+            {
+                ViewBag.MessageError = "ไม่พบองค์กรที่ระบุ!!";
+            }
         }
 
         #endregion
