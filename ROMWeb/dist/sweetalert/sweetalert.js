@@ -64,6 +64,19 @@ function AlertInfo(message) {
     });
 }
 
+function AlertRedirect(message,urlredirect) {
+    swal({
+        title: "",
+        text: message,
+        type: "info",
+        showCancelButton: false,
+        confirmButtonClass: "btn-primary",
+        closeOnConfirm: false,
+        html: true,
+        urlredirect: urlredirect,
+    });
+}
+
 function AlertLoading(flag, msg) {
     $("body").AlertLoading(flag, msg);
 }
@@ -147,7 +160,8 @@ $.fn.AlertLoading = function (flag, msg) {
                 inputType: 'text',
                 inputPlaceholder: '',
                 inputValue: '',
-                showLoaderOnConfirm: false
+                showLoaderOnConfirm: false,
+                urlredirect : '',
             };
 
             exports.default = defaultParams;
@@ -667,6 +681,7 @@ $.fn.AlertLoading = function (flag, msg) {
             Object.defineProperty(exports, "__esModule", {
                 value: true
             });
+            
             var injectedHTML =
 
                 // Dark overlay
@@ -691,7 +706,7 @@ $.fn.AlertLoading = function (flag, msg) {
                 "<h2 style='padding-bottom: 1px;'>Title</h2>\n    <p class=\"lead text-muted\">Text</p>\n    <div class=\"form-group\">\n      <input type=\"text\" class=\"form-control\" tabIndex=\"3\" />\n      <span class=\"sa-input-error help-block\">\n        <span class=\"glyphicon glyphicon-exclamation-sign\"></span> <span class=\"sa-help-text\">Not valid</span>\n      </span>\n    </div>" +
 
                 // Cancel and confirm buttons
-                "<div class=\"sa-button-container\">\n    <div class=\"sa-confirm-button-container\">\n        <button class=\"confirm btn btn-lg\" tabIndex=\"1\">OK</button>" +
+                "<div class=\"sa-button-container\">\n    <div class=\"sa-confirm-button-container\">\n        <button class=\"confirm btn btn-lg\" tabIndex=\"1\">OK</button>  <a href='#' class=\"confirm-redirect btn btn-lg\" tabIndex=\"3\" style='display: none;' >OK</a>" +
 
                 // Loading animation
                 "<div class=\"la-ball-fall\">\n          <div></div>\n          <div></div>\n          <div></div>\n        </div>\n      </div>\n  <button class=\"cancel btn btn-lg\" tabIndex=\"2\">Cancel</button>\n      </div>" +
@@ -728,6 +743,7 @@ $.fn.AlertLoading = function (flag, msg) {
                 var $text = modal.querySelector('p');
                 var $cancelBtn = modal.querySelector('button.cancel');
                 var $confirmBtn = modal.querySelector('button.confirm');
+                var $confirmBtnRedirect = modal.querySelector('a.confirm-redirect');
 
                 /*
                  * Title
@@ -739,6 +755,8 @@ $.fn.AlertLoading = function (flag, msg) {
                  */
                 $text.innerHTML = params.html ? params.text : (0, _handleDom.escapeHtml)(params.text || '').split('\n').join('<br>');
                 if (params.text) (0, _handleDom.show)($text);
+
+              
 
                 /*
                  * Custom class
@@ -868,8 +886,10 @@ $.fn.AlertLoading = function (flag, msg) {
                 modal.setAttribute('data-has-confirm-button', params.showConfirmButton);
                 if (params.showConfirmButton) {
                     $confirmBtn.style.display = 'inline-block';
+                    $confirmBtnRedirect.style.display = 'inline-block';
                 } else {
                     (0, _handleDom.hide)($confirmBtn);
+                    (0, _handleDom.hide)($confirmBtnRedirect);
                 }
 
                 /*
@@ -880,12 +900,14 @@ $.fn.AlertLoading = function (flag, msg) {
                 }
                 if (params.confirmButtonText) {
                     $confirmBtn.innerHTML = (0, _handleDom.escapeHtml)(params.confirmButtonText);
+                    $confirmBtnRedirect.innerHTML = (0, _handleDom.escapeHtml)(params.confirmButtonText);
                 }
 
                 /*
                  * Reset confirm buttons to default class (Ugly fix)
                  */
                 $confirmBtn.className = 'confirm btn btn-lg';
+
 
                 /*
                  * Attach selected class to the sweet alert modal
@@ -896,6 +918,7 @@ $.fn.AlertLoading = function (flag, msg) {
                  * Set confirm button to selected class
                  */
                 (0, _handleDom.addClass)($confirmBtn, params.confirmButtonClass);
+                (0, _handleDom.addClass)($confirmBtnRedirect, params.confirmButtonClass);
 
                 /*
                  * Set cancel button to selected class
@@ -911,6 +934,20 @@ $.fn.AlertLoading = function (flag, msg) {
                  * Set text to selected class
                  */
                 (0, _handleDom.addClass)($text, params.textClass);
+
+
+                /*
+                 * Redirect url button
+                 */
+                $confirmBtnRedirect.style.display = "none";
+                if (params.urlredirect != undefined && params.urlredirect != "") {
+                    $confirmBtn.style.display = "none";
+                    $confirmBtnRedirect.style.display = "block";
+                    $confirmBtnRedirect.setAttribute('href', params.urlredirect);
+                    $confirmBtnRedirect.onclick = function () { sweetAlert.close(); return true; }
+                }
+
+
 
                 /*
                  * Allow outside click

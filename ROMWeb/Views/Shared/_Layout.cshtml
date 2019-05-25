@@ -567,5 +567,15 @@
         </script>
     }
 
+    @if (ViewBag.MessageRedirect != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                AlertRedirect('@ViewBag.MessageRedirect','@ViewBag.UrlRedirect');
+            };
+        </script>
+    }
+
+    
 </body>
 </html>

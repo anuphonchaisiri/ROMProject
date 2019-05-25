@@ -55,8 +55,15 @@ namespace ROM.Controllers
             return View();
         }
 
-        #endregion
+        public ActionResult AlertRedirect(string message,string urlRedirect)
+        {
+            ViewBag.MessageRedirect = message;
+            ViewBag.UrlRedirect = urlRedirect;
+            return View();
+        }
         
+        #endregion
+
         #region Private  Set Value
 
         private void SetSystemIDControl(string CompName)
@@ -96,7 +103,8 @@ namespace ROM.Controllers
             }
             else
             {
-                ViewBag.MessageError = "ไม่พบองค์กรที่ระบุ!!";
+                ViewBag.MessageRedirect = "ไม่พบองค์กรที่ระบุ!!";
+                ViewBag.UrlRedirect = "/";
             }
         }
 
