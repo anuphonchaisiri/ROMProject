@@ -12,5 +12,10 @@ namespace ROM.Controllers
         {
             return View();
         }
+
+        public ActionResult Invoice()
+        {
+            return View();
+        }
     }
 }

@@ -1993,9 +1993,9 @@ span.right {
     }
 
 @media (min-width: 992px) {
-    footer {
+    /*footer {
         margin-left: 230px
-    }
+    }*/
 }
 
 @media (min-width: 992px) {

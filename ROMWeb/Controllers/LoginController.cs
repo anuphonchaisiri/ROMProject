@@ -35,7 +35,7 @@ namespace ROM.Controllers
             }
             catch (Exception ex)
             {
-               ViewBag.ErrorMessage = ex.Message;
+               ViewBag.MessageError = ex.Message;
                return View();
             }
         }

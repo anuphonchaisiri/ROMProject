@@ -55,6 +55,12 @@ function printPageformToPrinter(obj) {
         $(header).append("<style type='text/css' media='print'> @page { size: landscape; } </style>");
     }
 
+    //style
+    //var styleForm = $('style');
+    //for (var i = 0; i < styleForm.length; i++) {
+    //    $(styleForm[i]).clone().appendTo($(header));
+    //}
+
     //var strPrint = "<>"
     newWin.document.open();
     newWin.document.write('<html>' + $(header).html()

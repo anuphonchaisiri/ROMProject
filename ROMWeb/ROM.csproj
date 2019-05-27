@@ -495,6 +495,7 @@
     <Content Include="Views\Shared\_LayoutChat.cshtml" />
     <Content Include="Views\Company\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Report\Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
